@@ -1,0 +1,73 @@
+# DB Agent MCP - 数据库连接配置示例
+# 复制此文件为 databases.yaml 并根据需要修改
+
+connections:
+  # ========== MySQL 示例 ==========
+  - id: "local-mysql"
+    name: "本地MySQL"
+    type: mysql
+    host: "localhost"
+    port: 3306
+    database: "testdb"
+    username: "${MYSQL_USER}"
+    password: "${MYSQL_PASS}"
+    readonly: false
+    poolSize: 5
+    timeout: 30000
+    description: "本地开发MySQL数据库"
+
+  # MySQL 生产环境（只读）
+  - id: "prod-mysql"
+    name: "生产MySQL"
+    type: mysql
+    host: "${MYSQL_PROD_HOST}"
+    port: 3306
+    database: "production"
+    username: "${MYSQL_PROD_USER}"
+    password: "${MYSQL_PROD_PASS}"
+    readonly: true
+    poolSize: 10
+    description: "生产环境只读副本"
+
+  # ========== PostgreSQL 示例 ==========
+  - id: "local-postgres"
+    name: "本地PostgreSQL"
+    type: postgresql
+    host: "localhost"
+    port: 5432
+    database: "testdb"
+    username: "${PG_USER}"
+    password: "${PG_PASS}"
+    schema: "public"
+    readonly: false
+    poolSize: 5
+    description: "本地开发PostgreSQL数据库"
+
+  # PostgreSQL 分析库
+  - id: "analytics-pg"
+    name: "分析数据库"
+    type: postgresql
+    host: "localhost"
+    port: 5432
+    database: "analytics"
+    username: "${PG_USER}"
+    password: "${PG_PASS}"
+    schema: "warehouse"
+    readonly: true
+    description: "数据仓库，用于BI查询"
+
+  # ========== SQLite 示例 ==========
+  - id: "dev-sqlite"
+    name: "本地开发库"
+    type: sqlite
+    path: "./data/dev.db"
+    readonly: false
+    description: "本地开发测试数据库"
+
+  # SQLite 嵌入式数据库
+  - id: "cache-sqlite"
+    name: "缓存数据库"
+    type: sqlite
+    path: "./data/cache.db"
+    readonly: false
+    description: "本地缓存数据"

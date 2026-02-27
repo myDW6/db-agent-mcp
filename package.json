@@ -1,0 +1,45 @@
+{
+  "name": "db-agent-mcp",
+  "version": "1.0.0",
+  "description": "基于 MCP 的数据库智能代理，支持 MySQL/PostgreSQL/SQLite",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "db-agent-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [
+    "mcp",
+    "database",
+    "mysql",
+    "postgresql",
+    "sqlite",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "better-sqlite3": "^12.6.2",
+    "mysql2": "^3.18.2",
+    "pg": "^8.19.0",
+    "yaml": "^2.8.2",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^25.3.2",
+    "@types/pg": "^8.16.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}
